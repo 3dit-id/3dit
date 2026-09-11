@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080808">
+<meta name="robots" content="index,follow">
+<link rel="icon" type="image/png" href="favicon-3dit.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&family=Roboto:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-brands/css/uicons-brands.css">
+<link rel="stylesheet" href="style.css">
+  <title>Kalkulator Bangunan | 3DIT Design & Technology</title>
+  <meta name="description" content="Kalkulator bangunan profesional untuk estimasi beton, bata, lantai, atap, cat, dan RAB sederhana.">
+  
+</head>
+<body>
+<a class="skip-link" href="#main">Lewati ke konten</a>
+<header class="site-header">
+  <div class="container navbar">
+    <a class="logo-link" href="index.html" aria-label="3DIT Design & Technology">
+      <img src="logo-3dit.png" alt="3DIT Design & Technology">
+    </a>
+    <button class="menu-toggle" aria-label="Buka menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <ul class="nav-menu" aria-label="Navigasi utama">
+      <li class="nav-item"><a class="nav-link" data-page="index.html" href="index.html">Home</a></li>
+      <li class="nav-item"><a class="nav-link" data-page="profile.html" href="profile.html">Profile</a></li>
+      <li class="nav-item has-dropdown">
+        <a class="nav-link" href="#kategori">Kategori <span class="chevron">⌄</span></a>
+        <div class="dropdown">
+          <a href="kategori-desain-grafis.html">Desain Grafis</a>
+          <a href="kategori-desain-bangunan.html">Desain Bangunan</a>
+        </div>
+      </li>
+      <li class="nav-item"><a class="nav-link" data-page="paket-harga.html" href="paket-harga.html">Paket Harga</a></li>
+      <li class="nav-item has-dropdown">
+        <a class="nav-link" href="#tools">Tools <span class="chevron">⌄</span></a>
+        <div class="dropdown">
+          <a href="kalkulator.html">Kalkulator Bangunan</a>
+          <a href="converter.html">Converter</a>
+          <a href="chat-ai.html">Chat AI <span class="badge">GPT</span></a>
+        </div>
+      </li>
+      <li class="nav-item"><a class="nav-link" data-page="kontak.html" href="kontak.html">Kontak</a></li>
+    </ul>
+    <a class="btn btn-primary nav-cta" data-whatsapp href="#" target="_blank" rel="noopener">Konsultasi</a>
+  </div>
+</header>
+<main id="main">
+
+<section class="page-hero"><div class="container"><div class="breadcrumb"><a href="index.html">Home</a><span>/</span><span>Tools</span><span>/</span><span>Kalkulator Bangunan</span></div><span class="kicker">Building Calculator</span><h1>Kalkulator <span class="text-yellow">Bangunan.</span></h1><p class="lead">Kumpulan kalkulator praktis untuk estimasi awal volume, material, luas, dan biaya. Semua koefisien serta harga dapat Anda ubah.</p></div></section>
+<section class="section"><div class="container">
+<div class="notice" style="margin-bottom:24px"><strong>Penting:</strong> Hasil kalkulator adalah estimasi awal. Untuk pekerjaan struktur, volume final, RAB resmi, dan pelaksanaan konstruksi, gunakan gambar kerja dan perhitungan tenaga ahli serta standar yang berlaku.</div>
+<div class="calc-layout">
+  <aside class="calc-nav card">
+    <button class="active" data-calc-tab="calc-concrete">Beton</button>
+    <button data-calc-tab="calc-wall">Dinding / Bata</button>
+    <button data-calc-tab="calc-floor">Lantai</button>
+    <button data-calc-tab="calc-roof">Atap</button>
+    <button data-calc-tab="calc-paint">Cat</button>
+    <button data-calc-tab="calc-rab">RAB Sederhana</button>
+  </aside>
+  <div>
+    <section id="calc-concrete" class="calc-panel active card">
+      <span class="kicker">01 · Concrete</span><h2>Volume & material beton</h2><p class="tool-note">Gunakan panjang × lebar × tebal. Koefisien material dapat disesuaikan dengan mix design/pekerjaan Anda.</p>
+      <form data-calc="concrete" class="form-grid">
+        <div class="field"><label>Panjang (m)</label><input id="c-l" type="number" step="0.01" value="5"></div>
+        <div class="field"><label>Lebar (m)</label><input id="c-w" type="number" step="0.01" value="4"></div>
+        <div class="field"><label>Tebal (m)</label><input id="c-d" type="number" step="0.01" value="0.12"></div>
+        <div class="field"><label>Waste / cadangan (%)</label><input id="c-waste" type="number" step="0.1" value="5"></div>
+        <div class="field"><label>Harga beton per m³ (Rp)</label><input id="c-price" type="number" value="1100000"></div>
+        <div class="field"><label>Semen kg per m³ (editable)</label><input id="c-cement" type="number" step="0.1" value="325"></div>
+        <div class="field"><label>Pasir m³ per m³ (editable)</label><input id="c-sand" type="number" step="0.001" value="0.50"></div>
+        <div class="field"><label>Batu m³ per m³ (editable)</label><input id="c-stone" type="number" step="0.001" value="0.75"></div>
+      </form>
+      <div class="result-box" style="margin-top:20px"><span>Volume dasar</span><div class="result-value" id="c-vol">0 m³</div><div class="result-grid"><div class="result-mini"><strong id="c-total">0 m³</strong><span>+ waste</span></div><div class="result-mini"><strong id="c-cement-out">0 kg</strong><span>estimasi semen</span></div><div class="result-mini"><strong id="c-sand-out">0 m³</strong><span>estimasi pasir</span></div><div class="result-mini"><strong id="c-stone-out">0 m³</strong><span>estimasi batu</span></div><div class="result-mini"><strong id="c-cost">Rp 0</strong><span>estimasi beton</span></div></div></div>
+    </section>
+
+    <section id="calc-wall" class="calc-panel card">
+      <span class="kicker">02 · Wall</span><h2>Dinding / kebutuhan bata</h2><p class="tool-note">Masukkan luas bukaan pintu + jendela. Koefisien bata per m² bisa disesuaikan dengan ukuran bata dan metode pemasangan.</p>
+      <form data-calc="wall" class="form-grid">
+        <div class="field"><label>Panjang dinding (m)</label><input id="w-l" type="number" step="0.01" value="10"></div>
+        <div class="field"><label>Tinggi dinding (m)</label><input id="w-h" type="number" step="0.01" value="3"></div>
+        <div class="field"><label>Total bukaan (m²)</label><input id="w-open" type="number" step="0.01" value="3"></div>
+        <div class="field"><label>Bata per m² (pcs)</label><input id="w-brick" type="number" step="1" value="70"></div>
+        <div class="field"><label>Waste (%)</label><input id="w-waste" type="number" step="0.1" value="5"></div>
+        <div class="field"><label>Harga bata / pcs (Rp)</label><input id="w-price" type="number" value="1000"></div>
+      </form>
+      <div class="result-box" style="margin-top:20px"><span>Luas bersih</span><div class="result-value" id="w-area">0 m²</div><div class="result-grid"><div class="result-mini"><strong id="w-qty">0 pcs</strong><span>kebutuhan bata</span></div><div class="result-mini"><strong id="w-cost">Rp 0</strong><span>estimasi bata</span></div></div></div>
+    </section>
+
+    <section id="calc-floor" class="calc-panel card">
+      <span class="kicker">03 · Floor</span><h2>Kebutuhan lantai</h2><p class="tool-note">Cocok untuk keramik/granit. Harga satuan bisa diisi per m².</p>
+      <form data-calc="floor" class="form-grid">
+        <div class="field"><label>Panjang area (m)</label><input id="f-l" type="number" step="0.01" value="6"></div>
+        <div class="field"><label>Lebar area (m)</label><input id="f-w" type="number" step="0.01" value="4"></div>
+        <div class="field"><label>Waste (%)</label><input id="f-waste" type="number" step="0.1" value="10"></div>
+        <div class="field"><label>Isi per dus (m²)</label><input id="f-box" type="number" step="0.01" value="1.44"></div>
+        <div class="field"><label>Harga per m² (Rp)</label><input id="f-unit" type="number" value="150000"></div>
+      </form>
+      <div class="result-box" style="margin-top:20px"><span>Luas area</span><div class="result-value" id="f-area">0 m²</div><div class="result-grid"><div class="result-mini"><strong id="f-total">0 m²</strong><span>+ waste</span></div><div class="result-mini"><strong id="f-boxes">0 dus</strong><span>estimasi dus</span></div><div class="result-mini"><strong id="f-cost">Rp 0</strong><span>estimasi material</span></div></div></div>
+    </section>
+
+    <section id="calc-roof" class="calc-panel card">
+      <span class="kicker">04 · Roof</span><h2>Luas bidang atap</h2><p class="tool-note">Estimasi bidang miring menggunakan panjang × lebar × faktor kemiringan. Tambahkan overlap dan waste material.</p>
+      <form data-calc="roof" class="form-grid">
+        <div class="field"><label>Panjang bangunan (m)</label><input id="r-l" type="number" step="0.01" value="10"></div>
+        <div class="field"><label>Lebar bidang proyeksi (m)</label><input id="r-w" type="number" step="0.01" value="7"></div>
+        <div class="field"><label>Sudut kemiringan (°)</label><input id="r-angle" type="number" step="0.1" value="30"></div>
+        <div class="field"><label>Overlap / tambahan (%)</label><input id="r-overlap" type="number" step="0.1" value="5"></div>
+        <div class="field"><label>Waste (%)</label><input id="r-waste" type="number" step="0.1" value="5"></div>
+        <div class="field"><label>Harga material / m² (Rp)</label><input id="r-price" type="number" value="120000"></div>
+      </form>
+      <div class="result-box" style="margin-top:20px"><span>Luas bidang sebelum waste</span><div class="result-value" id="r-area">0 m²</div><div class="result-grid"><div class="result-mini"><strong id="r-total">0 m²</strong><span>kebutuhan + waste</span></div><div class="result-mini"><strong id="r-cost">Rp 0</strong><span>estimasi material</span></div></div></div>
+    </section>
+
+    <section id="calc-paint" class="calc-panel card">
+      <span class="kicker">05 · Paint</span><h2>Kebutuhan cat</h2><p class="tool-note">Estimasi dinding + plafon, dikalikan jumlah lapisan dan dibagi daya sebar cat.</p>
+      <form data-calc="paint" class="form-grid">
+        <div class="field"><label>Panjang ruangan (m)</label><input id="p-l" type="number" step="0.01" value="6"></div>
+        <div class="field"><label>Lebar ruangan (m)</label><input id="p-w" type="number" step="0.01" value="4"></div>
+        <div class="field"><label>Tinggi dinding (m)</label><input id="p-h" type="number" step="0.01" value="3"></div>
+        <div class="field"><label>Bukaan (m²)</label><input id="p-open" type="number" step="0.01" value="3"></div>
+        <div class="field"><label>Jumlah lapisan</label><input id="p-coats" type="number" step="1" value="2"></div>
+        <div class="field"><label>Daya sebar (m²/L)</label><input id="p-coverage" type="number" step="0.1" value="10"></div>
+        <div class="field"><label>Harga cat / liter (Rp)</label><input id="p-price" type="number" value="75000"></div>
+      </form>
+      <div class="result-box" style="margin-top:20px"><span>Luas dasar yang dicat</span><div class="result-value" id="p-area">0 m²</div><div class="result-grid"><div class="result-mini"><strong id="p-liters">0 L</strong><span>estimasi cat</span></div><div class="result-mini"><strong id="p-cost">Rp 0</strong><span>estimasi biaya</span></div></div></div>
+    </section>
+
+    <section id="calc-rab" class="calc-panel card">
+      <span class="kicker">06 · RAB</span><h2>RAB sederhana</h2><p class="tool-note">Masukkan kuantitas dan harga satuan. Tambahkan overhead dan profit untuk mendapatkan total estimasi.</p>
+      <div class="table-wrap">
+        <table><thead><tr><th>Qty</th><th>Harga satuan</th><th>Subtotal</th><th></th></tr></thead><tbody id="rabBody">
+          <tr class="rab-row"><td><input class="rab-q" type="number" min="0" value="1"></td><td><input class="rab-p" type="number" min="0" value="5000000"></td><td class="rab-sub">Rp 5.000.000</td><td><button type="button" class="btn btn-ghost rab-del">Hapus</button></td></tr>
+          <tr class="rab-row"><td><input class="rab-q" type="number" min="0" value="1"></td><td><input class="rab-p" type="number" min="0" value="2500000"></td><td class="rab-sub">Rp 2.500.000</td><td><button type="button" class="btn btn-ghost rab-del">Hapus</button></td></tr>
+        </tbody></table>
+      </div>
+      <div class="copy-row" style="margin-top:14px"><button class="btn btn-outline" id="rabAdd" type="button">+ Tambah item</button></div>
+      <div class="form-grid" style="margin-top:18px"><div class="field"><label>Overhead (%)</label><input id="rab-oh" type="number" step=".1" value="5"></div><div class="field"><label>Profit (%)</label><input id="rab-profit" type="number" step=".1" value="10"></div></div>
+      <div class="result-box" style="margin-top:20px"><span>Total</span><div class="result-value" id="rab-grand">Rp 0</div><div class="result-grid"><div class="result-mini"><strong id="rab-total">Rp 0</strong><span>subtotal</span></div><div class="result-mini"><strong id="rab-oh-out">Rp 0</strong><span>overhead</span></div><div class="result-mini"><strong id="rab-profit-out">Rp 0</strong><span>profit</span></div></div></div>
+    </section>
+  </div>
+</div>
+</div></section>
+
+</main>
+<footer>
+  <div class="container footer-main">
+    <div>
+      <img class="footer-logo" src="logo-3dit.png" alt="3DIT Design & Technology">
+      <p>Solusi desain, teknologi, dan perhitungan bangunan yang rapi, praktis, dan profesional.</p>
+      <div class="socials" aria-label="Media sosial">
+        <a class="social" data-social="instagram" href="#" target="_blank" rel="noopener" aria-label="Instagram"><i class="fi fi-brands-instagram"></i></a>
+        <a class="social" data-social="facebook" href="#" target="_blank" rel="noopener" aria-label="Facebook"><i class="fi fi-brands-facebook"></i></a>
+        <a class="social" data-social="tiktok" href="#" target="_blank" rel="noopener" aria-label="TikTok"><i class="fi fi-brands-tik-tok"></i></a>
+        <a class="social" data-social="youtube" href="#" target="_blank" rel="noopener" aria-label="YouTube"><i class="fi fi-brands-youtube"></i></a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-title">Navigasi</div>
+      <div class="footer-links">
+        <a href="index.html">Home</a><a href="profile.html">Profile</a><a href="paket-harga.html">Paket Harga</a><a href="kontak.html">Kontak</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-title">Tools</div>
+      <div class="footer-links">
+        <a href="kalkulator.html">Kalkulator Bangunan</a><a href="converter.html">Converter</a><a href="chat-ai.html">Chat AI</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-title">Kontak</div>
+      <div class="footer-links">
+        <span class="text-muted" data-address></span>
+        <a data-whatsapp href="#" target="_blank" rel="noopener">WhatsApp: <span data-whatsapp="label"></span></a>
+        <a data-email href="#"></a>
+        <a data-social="youtube" href="#" target="_blank" rel="noopener">YouTube</a>
+      </div>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© <span id="year"></span> 3DIT Design & Technology. All rights reserved.</span>
+    <span>Built for GitHub Pages · Icons by Flaticon UIcons</span>
+  </div>
+</footer>
+<script>document.getElementById("year").textContent=new Date().getFullYear()</script>
+<script src="site-config.js"></script><script src="main.js"></script><script src="calculator.js"></script>
+</body>
+</html>
