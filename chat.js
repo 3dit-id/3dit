@@ -1,21 +1,27 @@
 
-document.addEventListener("DOMContentLoaded",()=>{
-  const form=document.querySelector("#chatForm"),input=document.querySelector("#chatInput"),windowEl=document.querySelector("#chatWindow"),status=document.querySelector("#aiStatus");
-  if(!form)return;
-  const cfg=window.SITE_CONFIG||{};
-  const add=(text,who)=>{const d=document.createElement("div");d.className=`msg ${who}`;d.textContent=text;windowEl.appendChild(d);windowEl.scrollTop=windowEl.scrollHeight};
-  form.addEventListener("submit",async e=>{
-    e.preventDefault();const text=input.value.trim();if(!text)return;
-    add(text,"user");input.value="";status.textContent="Memproses…";
-    try{
-      if(!cfg.aiEndpoint) throw new Error("demo");
-      const r=await fetch(cfg.aiEndpoint,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({message:text})});
-      if(!r.ok)throw new Error("network");
-      const data=await r.json();add(data.reply||"Tidak ada jawaban dari server.","ai");
-      status.textContent="Online";
-    }catch(err){
-      add("Mode demo aktif. Untuk menghubungkan Chat AI ke GPT, isi SITE_CONFIG.aiEndpoint dengan URL backend Anda. Jangan menaruh OpenAI API key langsung di JavaScript/browser karena dapat terlihat publik.","ai");
-      status.textContent="Mode demo";
-    }
-  });
-});
+// Netlify Function: /.netlify/functions/chat
+exports.handler = async (event) => {
+  if (event.httpMethod !== "POST") return { statusCode: 405, body: JSON.stringify({error:"Method not allowed"}) };
+  try {
+    const { message } = JSON.parse(event.body || "{}");
+    if (!message) return { statusCode: 400, body: JSON.stringify({error:"Message is required"}) };
+    const apiKey = process.env.OPENAI_API_KEY;
+    if (!apiKey) return { statusCode: 500, body: JSON.stringify({error:"OPENAI_API_KEY is not configured"}) };
+
+    const response = await fetch("https://api.openai.com/v1/responses", {
+      method:"POST",
+      headers:{ "Content-Type":"application/json", "Authorization":`Bearer ${apiKey}` },
+      body:JSON.stringify({
+        model: process.env.OPENAI_MODEL || "gpt-5.6-luna",
+        instructions:"You are 3DIT Design & Technology's helpful website assistant. Answer clearly in Indonesian unless the user asks for another language. Do not claim professional structural certification. For construction calculations, explain assumptions and recommend professional verification.",
+        input: message
+      })
+    });
+    const data = await response.json();
+    if (!response.ok) return { statusCode: response.status, body: JSON.stringify({error:data?.error?.message || "OpenAI API error"}) };
+    const reply = data.output?.flatMap(item => item.content || []).map(part => part.text || "").join("\n").trim() || "Tidak ada jawaban.";
+    return { statusCode:200, headers:{"Content-Type":"application/json"}, body:JSON.stringify({reply}) };
+  } catch (e) {
+    return { statusCode:500, body:JSON.stringify({error:"Server error"}) };
+  }
+};
