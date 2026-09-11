@@ -75,6 +75,8 @@
         <div class="field"><label>Batu m³ per m³ (editable)</label><input id="c-stone" type="number" step="0.001" value="0.75"></div>
       </form>
       <div class="result-box" style="margin-top:20px"><span>Volume dasar</span><div class="result-value" id="c-vol">0 m³</div><div class="result-grid"><div class="result-mini"><strong id="c-total">0 m³</strong><span>+ waste</span></div><div class="result-mini"><strong id="c-cement-out">0 kg</strong><span>estimasi semen</span></div><div class="result-mini"><strong id="c-sand-out">0 m³</strong><span>estimasi pasir</span></div><div class="result-mini"><strong id="c-stone-out">0 m³</strong><span>estimasi batu</span></div><div class="result-mini"><strong id="c-cost">Rp 0</strong><span>estimasi beton</span></div></div></div>
+    
+      <div class="calc-result-actions"><button type="button" class="btn btn-primary add-to-rab" data-rab-source="concrete">＋ Masukkan ke RAB</button><span class="rab-hint">Menambahkan hasil volume beton ke RAB.</span></div>
     </section>
 
     <section id="calc-wall" class="calc-panel card">
@@ -88,6 +90,8 @@
         <div class="field"><label>Harga bata / pcs (Rp)</label><input id="w-price" type="number" value="1000"></div>
       </form>
       <div class="result-box" style="margin-top:20px"><span>Luas bersih</span><div class="result-value" id="w-area">0 m²</div><div class="result-grid"><div class="result-mini"><strong id="w-qty">0 pcs</strong><span>kebutuhan bata</span></div><div class="result-mini"><strong id="w-cost">Rp 0</strong><span>estimasi bata</span></div></div></div>
+    
+      <div class="calc-result-actions"><button type="button" class="btn btn-primary add-to-rab" data-rab-source="wall">＋ Masukkan ke RAB</button><span class="rab-hint">Menambahkan kebutuhan bata ke RAB.</span></div>
     </section>
 
     <section id="calc-floor" class="calc-panel card">
@@ -100,6 +104,8 @@
         <div class="field"><label>Harga per m² (Rp)</label><input id="f-unit" type="number" value="150000"></div>
       </form>
       <div class="result-box" style="margin-top:20px"><span>Luas area</span><div class="result-value" id="f-area">0 m²</div><div class="result-grid"><div class="result-mini"><strong id="f-total">0 m²</strong><span>+ waste</span></div><div class="result-mini"><strong id="f-boxes">0 dus</strong><span>estimasi dus</span></div><div class="result-mini"><strong id="f-cost">Rp 0</strong><span>estimasi material</span></div></div></div>
+    
+      <div class="calc-result-actions"><button type="button" class="btn btn-primary add-to-rab" data-rab-source="floor">＋ Masukkan ke RAB</button><span class="rab-hint">Menambahkan kebutuhan lantai ke RAB.</span></div>
     </section>
 
     <section id="calc-roof" class="calc-panel card">
@@ -113,6 +119,8 @@
         <div class="field"><label>Harga material / m² (Rp)</label><input id="r-price" type="number" value="120000"></div>
       </form>
       <div class="result-box" style="margin-top:20px"><span>Luas bidang sebelum waste</span><div class="result-value" id="r-area">0 m²</div><div class="result-grid"><div class="result-mini"><strong id="r-total">0 m²</strong><span>kebutuhan + waste</span></div><div class="result-mini"><strong id="r-cost">Rp 0</strong><span>estimasi material</span></div></div></div>
+    
+      <div class="calc-result-actions"><button type="button" class="btn btn-primary add-to-rab" data-rab-source="roof">＋ Masukkan ke RAB</button><span class="rab-hint">Menambahkan kebutuhan material atap ke RAB.</span></div>
     </section>
 
     <section id="calc-paint" class="calc-panel card">
@@ -127,19 +135,30 @@
         <div class="field"><label>Harga cat / liter (Rp)</label><input id="p-price" type="number" value="75000"></div>
       </form>
       <div class="result-box" style="margin-top:20px"><span>Luas dasar yang dicat</span><div class="result-value" id="p-area">0 m²</div><div class="result-grid"><div class="result-mini"><strong id="p-liters">0 L</strong><span>estimasi cat</span></div><div class="result-mini"><strong id="p-cost">Rp 0</strong><span>estimasi biaya</span></div></div></div>
+    
+      <div class="calc-result-actions"><button type="button" class="btn btn-primary add-to-rab" data-rab-source="paint">＋ Masukkan ke RAB</button><span class="rab-hint">Menambahkan kebutuhan cat ke RAB.</span></div>
     </section>
 
     <section id="calc-rab" class="calc-panel card">
-      <span class="kicker">06 · RAB</span><h2>RAB sederhana</h2><p class="tool-note">Masukkan kuantitas dan harga satuan. Tambahkan overhead dan profit untuk mendapatkan total estimasi.</p>
-      <div class="table-wrap">
-        <table><thead><tr><th>Qty</th><th>Harga satuan</th><th>Subtotal</th><th></th></tr></thead><tbody id="rabBody">
-          <tr class="rab-row"><td><input class="rab-q" type="number" min="0" value="1"></td><td><input class="rab-p" type="number" min="0" value="5000000"></td><td class="rab-sub">Rp 5.000.000</td><td><button type="button" class="btn btn-ghost rab-del">Hapus</button></td></tr>
-          <tr class="rab-row"><td><input class="rab-q" type="number" min="0" value="1"></td><td><input class="rab-p" type="number" min="0" value="2500000"></td><td class="rab-sub">Rp 2.500.000</td><td><button type="button" class="btn btn-ghost rab-del">Hapus</button></td></tr>
-        </tbody></table>
+      <span class="kicker">06 · RAB</span><h2>RAB Terintegrasi</h2>
+      <p class="tool-note">Hasil dari 5 kalkulator dapat langsung dimasukkan ke sini. Data tersimpan otomatis di browser ini sehingga tetap ada saat halaman dimuat ulang.</p>
+      <div class="rab-toolbar">
+        <div>
+          <strong id="rab-count">0 item</strong>
+          <span class="rab-toolbar-note">Item kalkulator + item manual</span>
+        </div>
+        <div class="rab-actions">
+          <button class="btn btn-outline" id="rabAdd" type="button">＋ Tambah item manual</button>
+          <button class="btn btn-outline" id="rabPrint" type="button">🖨 Cetak RAB</button>
+          <button class="btn btn-ghost" id="rabReset" type="button">Reset RAB</button>
+        </div>
       </div>
-      <div class="copy-row" style="margin-top:14px"><button class="btn btn-outline" id="rabAdd" type="button">+ Tambah item</button></div>
-      <div class="form-grid" style="margin-top:18px"><div class="field"><label>Overhead (%)</label><input id="rab-oh" type="number" step=".1" value="5"></div><div class="field"><label>Profit (%)</label><input id="rab-profit" type="number" step=".1" value="10"></div></div>
-      <div class="result-box" style="margin-top:20px"><span>Total</span><div class="result-value" id="rab-grand">Rp 0</div><div class="result-grid"><div class="result-mini"><strong id="rab-total">Rp 0</strong><span>subtotal</span></div><div class="result-mini"><strong id="rab-oh-out">Rp 0</strong><span>overhead</span></div><div class="result-mini"><strong id="rab-profit-out">Rp 0</strong><span>profit</span></div></div></div>
+      <div class="table-wrap rab-table-wrap">
+        <table class="rab-table"><thead><tr><th>Pekerjaan</th><th>Volume</th><th>Satuan</th><th>Harga satuan</th><th>Subtotal</th><th>Aksi</th></tr></thead><tbody id="rabBody"></tbody></table>
+        <div id="rabEmpty" class="rab-empty">Belum ada item RAB. Hitung salah satu kalkulator di atas lalu tekan <strong>＋ Masukkan ke RAB</strong>.</div>
+      </div>
+      <div class="form-grid rab-settings" style="margin-top:18px"><div class="field"><label>Overhead (%)</label><input id="rab-oh" type="number" step=".1" value="5"></div><div class="field"><label>Profit (%)</label><input id="rab-profit" type="number" step=".1" value="10"></div></div>
+      <div class="result-box" style="margin-top:20px"><span>Total RAB</span><div class="result-value" id="rab-grand">Rp 0</div><div class="result-grid"><div class="result-mini"><strong id="rab-total">Rp 0</strong><span>subtotal</span></div><div class="result-mini"><strong id="rab-oh-out">Rp 0</strong><span>overhead</span></div><div class="result-mini"><strong id="rab-profit-out">Rp 0</strong><span>profit</span></div><div class="result-mini"><strong id="rab-count-mini">0</strong><span>jumlah item</span></div></div></div>
     </section>
   </div>
 </div>
