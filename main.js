@@ -12,3 +12,27 @@ document.addEventListener('DOMContentLoaded',()=>{
  const slides=document.querySelector('.slides');if(slides){const items=[...slides.children],dots=[...document.querySelectorAll('.slider-dot')];let i=0;const go=n=>{i=(n+items.length)%items.length;slides.style.transform=`translateX(-${i*100}%)`;dots.forEach((d,j)=>d.classList.toggle('active',j===i))};document.querySelector('.slider-next')?.addEventListener('click',()=>go(i+1));document.querySelector('.slider-prev')?.addEventListener('click',()=>go(i-1));dots.forEach((d,j)=>d.addEventListener('click',()=>go(j)));setInterval(()=>go(i+1),6000)}
  const y=document.getElementById('year');if(y)y.textContent=new Date().getFullYear();
 });
+// =========================================
+// BACK TO TOP
+// =========================================
+
+const backToTop = document.getElementById("backToTop");
+
+if (backToTop) {
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 400) {
+      backToTop.classList.add("show");
+    } else {
+      backToTop.classList.remove("show");
+    }
+  });
+
+  backToTop.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  });
+
+}
