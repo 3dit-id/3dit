@@ -75,3 +75,46 @@ if (backToTop) {
   });
 
 })();
+// =========================================
+// CONTACT FORM → WHATSAPP
+// =========================================
+
+const contactForm = document.getElementById("contactForm");
+
+if (contactForm) {
+  contactForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const name = document.getElementById("name").value.trim();
+    const service = document.getElementById("service").value;
+    const message = document.getElementById("message").value.trim();
+
+    if (!name || !message) {
+      alert("Silakan isi Nama dan Pesan terlebih dahulu.");
+      return;
+    }
+
+    const whatsappNumber = "6281334748004";
+
+    const whatsappMessage =
+`Halo 3DIT.id,
+
+Saya ingin berkonsultasi.
+
+Nama: ${name}
+Layanan: ${service}
+
+Pesan:
+${message}
+
+Terima kasih.`;
+
+    const whatsappURL =
+      "https://wa.me/" +
+      whatsappNumber +
+      "?text=" +
+      encodeURIComponent(whatsappMessage);
+
+    window.open(whatsappURL, "_blank");
+  });
+}
