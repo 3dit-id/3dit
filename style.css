@@ -57,3 +57,35 @@
   .result-value,.result-mini strong{color:#111}
   .result-mini{background:#fff;border:1px solid #ddd}
 }
+/* =========================================
+   SLIDER MOBILE - GAMBAR TIDAK TERPOTONG
+   ========================================= */
+
+@media (max-width: 768px) {
+
+  .slider {
+    width: 100%;
+    height: auto;
+  }
+
+  .slides {
+    width: 100%;
+  }
+
+  .slide {
+    min-width: 100%;
+    width: 100%;
+    height: auto;
+    aspect-ratio: auto;
+    display: block;
+    overflow: hidden;
+  }
+
+  .slide > img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+  }
+
+}
