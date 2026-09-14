@@ -36,3 +36,42 @@ if (backToTop) {
   });
 
 }
+// =========================================
+// BACK TO TOP - OTOMATIS SEMUA HALAMAN
+// =========================================
+
+(function () {
+
+  // Buat tombol otomatis
+  const backToTop = document.createElement("button");
+
+  backToTop.id = "backToTop";
+  backToTop.setAttribute("aria-label", "Kembali ke atas");
+  backToTop.setAttribute("title", "Kembali ke atas");
+  backToTop.innerHTML = "↑";
+
+  // Masukkan tombol ke halaman
+  document.body.appendChild(backToTop);
+
+  // Tampilkan tombol setelah scroll
+  window.addEventListener("scroll", function () {
+
+    if (window.scrollY > 400) {
+      backToTop.classList.add("show");
+    } else {
+      backToTop.classList.remove("show");
+    }
+
+  });
+
+  // Klik tombol → kembali ke paling atas
+  backToTop.addEventListener("click", function () {
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+
+  });
+
+})();
