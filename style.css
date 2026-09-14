@@ -89,3 +89,14 @@
   }
 
 }
+/* MOBILE MENU ICON */
+@media (max-width: 768px) {
+  .menu-toggle {
+    color: #ffffff !important;
+    border-color: #ffffff !important;
+  }
+
+  .menu-toggle::before {
+    color: #ffffff !important;
+  }
+}
