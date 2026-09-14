@@ -160,3 +160,34 @@
   display: block;
   object-fit: cover;
 }
+/* =========================================
+   PORTFOLIO GALLERY
+   GAMBAR TIDAK TERPOTONG
+   ========================================= */
+
+.portfolio-visual {
+  width: 100%;
+  background: #0a0a0a;
+  border: 1px solid rgba(255, 208, 0, 0.18);
+  overflow: hidden;
+}
+
+.portfolio-visual img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .portfolio-visual {
+    width: 100%;
+  }
+
+  .portfolio-visual img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+}
