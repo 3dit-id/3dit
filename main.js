@@ -11,6 +11,49 @@ document.addEventListener('DOMContentLoaded',()=>{
  document.querySelectorAll('[data-reveal]').forEach(el=>{const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('show');io.unobserve(x.target)}}),{threshold:.12});io.observe(el)});
  const slides=document.querySelector('.slides');if(slides){const items=[...slides.children],dots=[...document.querySelectorAll('.slider-dot')];let i=0;const go=n=>{i=(n+items.length)%items.length;slides.style.transform=`translateX(-${i*100}%)`;dots.forEach((d,j)=>d.classList.toggle('active',j===i))};document.querySelector('.slider-next')?.addEventListener('click',()=>go(i+1));document.querySelector('.slider-prev')?.addEventListener('click',()=>go(i-1));dots.forEach((d,j)=>d.addEventListener('click',()=>go(j)));setInterval(()=>go(i+1),6000)}
  const y=document.getElementById('year');if(y)y.textContent=new Date().getFullYear();
+// =========================================
+// CONTACT FORM → WHATSAPP
+// =========================================
+
+const contactForm = document.getElementById('contactForm');
+
+if (contactForm) {
+  contactForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById('name').value.trim();
+    const service = document.getElementById('service').value;
+    const message = document.getElementById('message').value.trim();
+
+    if (!name || !message) {
+      alert('Silakan isi Nama dan Pesan terlebih dahulu.');
+      return;
+    }
+
+    const whatsappNumber = '6281334748004';
+
+    const text =
+`Halo 3DIT.id,
+
+Saya ingin berkonsultasi.
+
+Nama: ${name}
+Layanan: ${service}
+
+Pesan:
+${message}
+
+Terima kasih.`;
+
+    const whatsappURL =
+      'https://wa.me/' +
+      whatsappNumber +
+      '?text=' +
+      encodeURIComponent(text);
+
+    window.location.href = whatsappURL;
+  }
+ 
 });
 // =========================================
 // BACK TO TOP
